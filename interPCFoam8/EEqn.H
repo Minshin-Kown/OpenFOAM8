@@ -16,7 +16,7 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 	volScalarField rhoC = rho1*C1*alpha1 + (1.0 - alpha1)*rho2*C2;
 	volScalarField C = C1*alpha1 + (1.0 - alpha1)*C2;
 	volScalarField alphaDiffu = K/C;
-	volScalarField heT = FluidThermo.T()*rhoC;
+//	volScalarField heRho = rho*he;
 //        volScalarField heT = he/rho;
 //--------------------------------------------------------------------------//
 
@@ -62,8 +62,8 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 			==
 			//fvm::Sp(vDotvT-vDotcT,T) - (vDotvT-vDotcT)*TSat
 			//fvm::Sp(vDotcT-vDotvT,T)	//----22.01.13 T가 없어서 불가능
-			fvm::Sp(vDotcT-vDotvT, FluidThermo.T())
-			- ((vDotcT-vDotvT)*TSatLocal)
+			rho*fvm::Sp(vDotcT-vDotvT, he)
+			- ((vDotcT-vDotvT)*TSatLocal)*C*rho
 			
 		 );
 	 }
