@@ -3,7 +3,7 @@ Info<<"\n----------<Solve fluid hEqn>----------"<< endl;
 {
     volScalarField& he = FluidThermo.he();
 //    volScalarField& he = TPCmixture.he();
-    const volScalarField& alphaDiffu = FluidThermo.alpha();
+//   const volScalarField& alphaDiffu = FluidThermo.alpha();
 
 //---------------------------------22.01.13---------------------------------//
 
@@ -14,9 +14,10 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 
 	volScalarField K= K1*alpha1 + (1.0 - alpha1)*K2;
 	volScalarField rhoC = rho1*C1*alpha1 + (1.0 - alpha1)*rho2*C2;
-
-
-    volScalarField heT = he/rhoC;
+	volScalarField C = C1*alpha1 + (1.0 - alpha1)*C2;
+	volScalarField alphaDiffu = K/C;
+	volScalarField heT = FluidThermo.T()*rhoC;
+//        volScalarField heT = he/rho;
 //--------------------------------------------------------------------------//
 
 
@@ -26,6 +27,7 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
     fvScalarMatrix EEqn
     (
         fvm::ddt(rho, he) + fvm::div(rhoPhi, he) 		//phi is including rho [kg/s]
+	//fvm::ddt(he) + fvm::div(phi, he)
       //+ fvc::ddt(rho, KE) + fvc::div(rhoPhi, KE)			//K is (1/2)u^2; K.E. term //he[J/kg]
       + (
          //   he.name() == "e"
@@ -39,10 +41,10 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
           -dpdt						//flow work term (Pdv devided by rho)
         )
       //+ thermophysicalTransport.divq(he)
-         -fvm::laplacian (fvc::interpolate(alphaDiffu), he, "(alphaDiffu,he)")
+        -fvm::laplacian (fvc::interpolate(alphaDiffu), he, "(alphaDiffu,he)")
 
      ==
-        rho*(U&g)
+       rho*(U&g)
       //+ rad.Sh(thermo, he)					//radiation term = off
       //+ reaction.Qdot()					//reaction term = off
       + fvOptions(rho, he)
@@ -60,8 +62,8 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 			==
 			//fvm::Sp(vDotvT-vDotcT,T) - (vDotvT-vDotcT)*TSat
 			//fvm::Sp(vDotcT-vDotvT,T)	//----22.01.13 T가 없어서 불가능
-			fvm::Sp(vDotcT-vDotvT, he) 
-			- (vDotcT-vDotvT)*TSatLocal*(C1*alpha1+(1.0-alpha1)*C2)	//
+			fvm::Sp(vDotcT-vDotvT, FluidThermo.T())
+			- ((vDotcT-vDotvT)*TSatLocal)
 			
 		 );
 	 }
@@ -73,7 +75,7 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 //--------------------------------------------------------------------------//
     fvOptions.constrain(EEqn);
 
-    EEqn.solve();
+//    EEqn.solve();
 
     fvOptions.correct(he);
     }
@@ -91,7 +93,8 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 Pair<tmp<volScalarField> > mDot = TPCmixture->mDotT();
 	const volScalarField& mDotcT = mDot[0]();
 	const volScalarField& mDotvT = mDot[1]();
-		mDotT = (mDotcT-mDotvT)*(he-TSatLocal);
+//		mDotT = (mDotcT-mDotvT)*(he-TSatLocal);
+		mDotT = (mDotcT-mDotvT)*(FluidThermo.T()-TSatLocal);
 
 //-----------------------------------------------------------------------------//
 Info<<"\n-----------------------------------------"<< endl;

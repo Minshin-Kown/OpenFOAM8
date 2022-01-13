@@ -1,5 +1,5 @@
 SOURCE = \
-interPCFoam7.C \
+interPCFoam8.C \
 solid/solidRegionDiffNo.C \
 phaseChange/smoothInterfaceProperties/smoothInterfaceProperties.C \
 phaseChange/twoPhaseModels/incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.C \

@@ -1,4 +1,4 @@
-interPCFoam7.C
+interPCFoam8.C
 
 solid/solidRegionDiffNo.C
 
@@ -8,4 +8,4 @@ phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTw
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixtureNew.C
 phaseChange/phaseChangeTwoPhaseMixtures/Lee/Lee.C
 
-EXE = $(FOAM_USER_APPBIN)/interPCFoam7
+EXE = $(FOAM_USER_APPBIN)/interPCFoam8
