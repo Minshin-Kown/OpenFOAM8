@@ -12,9 +12,9 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 		const volScalarField& vDotcT = vDotT[0]();
 		const volScalarField& vDotvT = vDotT[1]();	
 
-	volScalarField K= K1*alpha1 + (1.0 - alpha1)*K2;
+	//volScalarField K= K1*alpha1 + (1.0 - alpha1)*K2;
 	volScalarField rhoC = rho1*C1*alpha1 + (1.0 - alpha1)*rho2*C2;
-	volScalarField C = C1*alpha1 + (1.0 - alpha1)*C2;
+	//volScalarField C = C1*alpha1 + (1.0 - alpha1)*C2;
 	volScalarField alphaDiffu = K/C;
 //	volScalarField heRho = rho*he;
 //        volScalarField heT = he/rho;

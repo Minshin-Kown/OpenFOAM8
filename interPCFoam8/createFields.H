@@ -140,6 +140,7 @@ surfaceScalarField rhoPhi
     fvc::interpolate(rho)*phi
 );
 
+Info<< "Generating field conductivity K\n" << endl;
 
 volScalarField K
 (
@@ -153,6 +154,22 @@ volScalarField K
     alpha1*K1 + (scalar(1) - alpha1)*K2,
     alpha1.boundaryField().types()
 );
+
+Info<< "Generating field heat capacity C\n" << endl;
+
+volScalarField C
+(
+    IOobject
+    (
+        "C",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT
+    ),
+    alpha1*C1 + (scalar(1) - alpha1)*C2,
+    alpha1.boundaryField().types()
+);
+
 //----------------------------------------------------------------//
 
 
@@ -219,8 +236,8 @@ Info<< "    Adding to flow work dpdt term\n" << endl;
             "dpdt",
             runTime.timeName(),
             mesh,
-            IOobject::NO_READ,
-            IOobject::AUTO_WRITE
+            IOobject::NO_READ
+            //IOobject::AUTO_WRITE
         ),
         mesh,
         dimensionedScalar
