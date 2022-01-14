@@ -27,9 +27,13 @@ ITstream compressionScheme2
 );
 //---------------------------------------------------------------------------//
 
+//------------------------------22.01.14 move to below part----------------------------//
+/*
     Pair<tmp<volScalarField>> vDotAlphal = TPCmixture->vDotAlphal();
     const volScalarField& vDotcAlphal = vDotAlphal[0]();
     const volScalarField& vDotvAlphal = vDotAlphal[1]();
+*/
+//-------------------------------------------------------------------------------------//
    // const volScalarField vDotvmcAlphal(vDotvAlphal - vDotcAlphal);
 
     //tmp<surfaceScalarField> talphaPhi;
@@ -90,6 +94,12 @@ ITstream compressionScheme2
 		compressionScheme2.rewind()
 	    )
         );
+
+
+    Pair<tmp<volScalarField>> vDotAlphal = TPCmixture->vDotAlphal();
+    const volScalarField& vDotcAlphal = vDotAlphal[0]();
+    const volScalarField& vDotvAlphal = vDotAlphal[1]();
+
 
        volScalarField Sp
         (

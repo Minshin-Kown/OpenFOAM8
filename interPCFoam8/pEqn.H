@@ -1,15 +1,6 @@
-{
-/*
-    if (correctPhi)
-    {
-        rAU.ref() = 1.0/UEqn.A();
-    }
-    else
-    {
-        rAU = 1.0/UEqn.A();
-    }
-*/
+//Info<<"\n----------<solve pressure equation>----------"<< endl;
 
+{
     rAU = 1.0/UEqn.A();		//correcPhi 조건 제거
     surfaceScalarField rAUf("rAUf", fvc::interpolate(rAU()));		//interface's RAU
     volVectorField HbyA(constrainHbyA(rAU()*UEqn.H(), U, p_rgh));	//openFOAM8에는 constraintHbyA가 새로 생성
@@ -18,19 +9,26 @@
     (
         "phiHbyA",
         fvc::flux(HbyA)
-      + fvc::interpolate(rho*rAU())*fvc::ddtCorr(U, phi, Uf)		//-----22.01.13 유도 방법 다름 확인하기
+      + fvc::interpolate(rho*rAU())*fvc::ddtCorr(U, phi/*, Uf*/)		//-----22.01.13 유도 방법 다름 확인하기
     );
 
 
+//------------------------22.01.14-----------------------//    
+    adjustPhi(phiHbyA, U, p_rgh);
+    phi = phiHbyA;
+//------------------------------------------------------//
+    
 
 
-//----------------------22.01.13 <2.2.0 버젼에는 없는 파트>---------------------//
+//----------------------turn off 22.01.13 <2.2.0 버젼에는 없는 파트>---------------------//
+/*
     if (p_rgh.needReference())
     {
         fvc::makeRelative(phiHbyA, U);
         adjustPhi(phiHbyA, U, p_rgh);
         fvc::makeAbsolute(phiHbyA, U);
     }
+*/
 //------------------------------------------------------------------------------//
 
 
@@ -47,17 +45,11 @@
     phiHbyA += phig;
 
     // Update the pressure BCs to ensure flux consistency
-    constrainPressure(p_rgh, U, phiHbyA, rAUf);
+    constrainPressure(p_rgh, U, phiHbyA, rAUf);		//turn off 22.01.14 = updateCoeffs error happen
 
     Pair<tmp<volScalarField>> vDotP = TPCmixture->vDotP();
-
-    const volScalarField& vDotcP = vDotP[0]();
-    const volScalarField& vDotvP = vDotP[1]();
-
-
-
-
-
+    	const volScalarField& vDotcP = vDotP[0]();
+    	const volScalarField& vDotvP = vDotP[1]();
 
 
     while (pimple.correctNonOrthogonal())
@@ -110,10 +102,10 @@
     }
 
     // Correct Uf if the mesh is moving
-    fvc::correctUf(Uf, U, phi);
+//    fvc::correctUf(Uf, U, phi);	//---turn of 22.01.14
 
     // Make the fluxes relative to the mesh motion
-    fvc::makeRelative(phi, U);
+//    fvc::makeRelative(phi, U);	//---turn of 22.01.14 (don't need mesh motion)
 
     p == p_rgh + rho*gh;
 

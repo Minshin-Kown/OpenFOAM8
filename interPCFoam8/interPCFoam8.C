@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
         volScalarField divU("divU0", fvc::div(fvc::absolute(phi, U)));
 
         #include "CourantNo.H"
-        #include "alphaCourantNo.H"
+        #include "./alphaCourantNo.H"
 	#include "./solid/solidRegionDiffusionNo.H"	//2
         #include "./deltaT/setMultiRegionDeltaT.H"
 
@@ -161,7 +161,9 @@ int main(int argc, char *argv[])
             #include "UEqn.H"			//Momentum-Predictor : get velocity vector
 	    #include "EEqn.H"
             // --- Pressure corrector loop
-            while (pimple.correct())
+
+	    Info<<"\n----------<solve pressure equation>----------"<< endl;
+	    while (pimple.correct())
             {
                 #include "pEqn.H"		//Pressure-Corrector : get pressure gradient
             }
