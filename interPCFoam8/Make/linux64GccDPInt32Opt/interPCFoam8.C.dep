@@ -31,8 +31,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CourantNo.H \
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/readDyMControls.H \
 ./phaseChange/twoPhaseModels/twoPhaseMixture/lnInclude/alphaCourantNo.H \
 ./deltaT/setMultiRegionDeltaT.H \
-correctPhi.H \
-$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/meshCourantNo.H \
 alphaControls.H \
 alphaEqnSubCycle.H \
 UEqn.H \
@@ -911,8 +909,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CourantNo.H :
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/readDyMControls.H :
 ./phaseChange/twoPhaseModels/twoPhaseMixture/lnInclude/alphaCourantNo.H :
 ./deltaT/setMultiRegionDeltaT.H :
-correctPhi.H :
-$(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/meshCourantNo.H :
 alphaControls.H :
 alphaEqnSubCycle.H :
 UEqn.H :

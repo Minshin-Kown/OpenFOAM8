@@ -115,7 +115,7 @@ int main(int argc, char *argv[])
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
-
+/*
     		if (pimple.firstPimpleIter() || moveMeshOuterCorrectors)
             {
                 mesh.update();
@@ -147,7 +147,7 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-
+*/
             divU = fvc::div(fvc::absolute(phi, U));
 
             #include "alphaControls.H"
