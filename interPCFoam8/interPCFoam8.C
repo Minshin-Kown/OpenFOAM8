@@ -176,6 +176,7 @@ int main(int argc, char *argv[])
 	    //#include "./solid/setRegionSolidFields.H"
 	    #include "./solid/solveSolid.H"     
 		
+	    //FluidThermo.correct();
 	    TPCmixture->correct(); 
 	}
 

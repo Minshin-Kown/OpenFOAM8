@@ -66,6 +66,7 @@ Foam::incompressibleTwoPhaseMixture::incompressibleTwoPhaseMixture
 
 //--------------------add 22.01.03-----------------//
 
+
 IOdictionary
     (
         IOobject
@@ -79,8 +80,8 @@ IOdictionary
     ),
     twoPhaseMixture(U.mesh(), *this),
 
-
-//	transportModel(U, phi),
+	//transportModel(U, phi),
+	//twoPhaseMixture(U, phi),
 	phase1Name_("phase1"),
 	phase2Name_("phase2"),
 
@@ -134,10 +135,10 @@ IOdictionary
             U_.db()
         ),
         U_.mesh(),
-        dimensionedScalar(dimViscosity, 0),
-        calculatedFvPatchScalarField::typeName
-	//dimensionedScalar("nu", dimensionSet(0, 2, -1, 0, 0), 0),
-	//calculatedFvPatchScalarField::typeName
+        //dimensionedScalar(dimViscosity, 0),
+        //calculatedFvPatchScalarField::typeName
+	dimensionedScalar("nu", dimensionSet(0, 2, -1, 0, 0), 0),
+	calculatedFvPatchScalarField::typeName
     )
 {
     calcNu();

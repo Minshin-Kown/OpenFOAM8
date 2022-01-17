@@ -3,6 +3,41 @@ Info<< "Create fluid fields\n" << endl;
 
 
 Info<< "Reading field p_rgh\n" << endl;
+
+/*
+Info<< "Reading field temporary T\n" << endl;
+volScalarField T
+(
+    IOobject
+    (
+        "T",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+*/
+/*
+Info<< "Adding to temporary he Field" << endl;
+
+volScalarField he
+(
+     IOobject
+     (
+      	"he",
+	runTime.timeName(),
+	mesh,
+	IOobject::NO_READ,
+	IOobject::AUTO_WRITE
+     ),
+     //mesh,
+     C*(T-T.oldTime()),
+     T.boundaryField().types()
+     //dimensionedScalar("he",dimEnergy/dimMass)
+);     
+*/
 volScalarField p_rgh
 (
     IOobject
@@ -46,13 +81,6 @@ volScalarField alpha1
 
 
 Info<< "Adding to Kinetic energy field KE\n" << endl;
-/*
-volScalarField KE
-(
- 	"KE",
-	0.5*magSqr(U)
-);
-*/
 
 volScalarField KE
 (

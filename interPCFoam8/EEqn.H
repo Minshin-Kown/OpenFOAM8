@@ -1,23 +1,20 @@
 Info<<"\n----------<Solve fluid hEqn>----------"<< endl;
 
 {
-    volScalarField& he = FluidThermo.he();
-//    volScalarField& he = TPCmixture.he();
-//   const volScalarField& alphaDiffu = FluidThermo.alpha();
+	volScalarField& he = FluidThermo.he();
+//	volScalarField he = C*T;
+
+
 
 //---------------------------------22.01.13---------------------------------//
 
 Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
-									
+//update volumetric condensation and vaporation rate to multiply (T-Tsat)									
 		const volScalarField& vDotcT = vDotT[0]();
 		const volScalarField& vDotvT = vDotT[1]();	
 
-	//volScalarField K= K1*alpha1 + (1.0 - alpha1)*K2;
-	//volScalarField rhoC = rho1*C1*alpha1 + (1.0 - alpha1)*rho2*C2;
-	//volScalarField C = C1*alpha1 + (1.0 - alpha1)*C2;
+
 	volScalarField alphaDiffu = K/C;
-//	volScalarField heRho = rho*he;
-//        volScalarField heT = he/rho;
 //--------------------------------------------------------------------------//
 
 
@@ -27,7 +24,7 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
     fvScalarMatrix EEqn
     (
         fvm::ddt(rho, he) + fvm::div(rhoPhi, he) 		//phi is including rho [kg/s]
-	//fvm::ddt(he) + fvm::div(phi, he)
+	//+ fvm::ddt(he) + fvm::div(phi, he)
       //+ fvc::ddt(rho, KE) + fvc::div(rhoPhi, KE)			//K is (1/2)u^2; K.E. term //he[J/kg]
       + (
          //   he.name() == "e"
@@ -91,10 +88,11 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 //------------------------------22.01.13---------------------------------------//
 
 Pair<tmp<volScalarField> > mDot = TPCmixture->mDotT();
-	const volScalarField& mDotcT = mDot[0]();
-	const volScalarField& mDotvT = mDot[1]();
+//update mass condensation and vaporation rate to multiply (T-Tsat)
+	const volScalarField& mDotcT = mDot[0]();	//condensation (vapor)
+	const volScalarField& mDotvT = mDot[1]();	//evaporation (fluid)
 //		mDotT = (mDotcT-mDotvT)*(he-TSatLocal);
-		mDotT = (mDotcT-mDotvT)*(FluidThermo.T()-TSatLocal);
+		mDotT = (mDotcT-mDotvT)*(FluidThermo.T()-TSatLocal);	//m dot fg = vapor - fluid
 
 //-----------------------------------------------------------------------------//
 Info<<"\n-----------------------------------------"<< endl;
