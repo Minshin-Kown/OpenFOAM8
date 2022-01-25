@@ -2,8 +2,8 @@ EXE_INC = \
     -I. \
     -I$(LIB_SRC)/transportModels/lnInclude \
     -I./phaseChange/twoPhaseModels/twoPhaseMixture/lnInclude \
-    -I$(LIB_SRC)/twoPhaseModels/interfaceProperties/lnInclude \
-    -I$(LIB_SRC)/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude \
+    -I./phaseChange/twoPhaseModels/interfaceProperties/lnInclude \
+    -I./phaseChange/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude \
     -I./phaseChange/phaseChangeTwoPhaseMixtures/lnInclude \
     -I$(LIB_SRC)/MomentumTransportModels/momentumTransportModels/lnInclude \
     -I$(LIB_SRC)/MomentumTransportModels/incompressible/lnInclude \
@@ -20,10 +20,8 @@ EXE_INC = \
     -I./phaseChange/smoothInterfaceProperties/lnInclude 
 
 EXE_LIBS = \
-    -lphaseChangeTwoPhaseMixtures \
     -ltwoPhaseMixture \
     -linterfaceProperties \
-    -lincompressibleTransportModels \
     -lmomentumTransportModels \
     -lfiniteVolume \
     -ldynamicFvMesh \
@@ -38,4 +36,6 @@ EXE_LIBS = \
     -lincompressibleMomentumTransportModels \
     -L$(FOAM_USER_LIBBIN) \
     -lsmoothInterfaceProperties \
-    -ltwoPhaseProperties
+    -ltwoPhaseProperties \
+    -lincompressibleTransportModels \
+    -lphaseChangeTwoPhaseMixtures 

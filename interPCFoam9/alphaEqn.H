@@ -75,7 +75,7 @@ ITstream compressionScheme2
 
     for (int aCorr=0; aCorr<nAlphaCorr; aCorr++)
     {
- 	surfaceScalarField  phiAdd = -fvc::flux(-phir, scalar(1)-alpha1, divAlpharName); //-----22.01.12 tmp 안됨
+ 	surfaceScalarField phiAdd = -fvc::flux(-phir, scalar(1)-alpha1, divAlpharName); //-----22.01.12 tmp 안됨
 
         surfaceScalarField talphaPhiCorr
 	//surfaceScalarField phiAlpha	//오류 발생
@@ -90,6 +90,7 @@ ITstream compressionScheme2
 	    + fvc::flux
 	    (
          	phiAdd,		//overloading part
+		//-fvc::flux(-phir, alpha1, divAlpharName),
 		alpha1,
 		compressionScheme2.rewind()
 	    )

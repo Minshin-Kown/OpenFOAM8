@@ -48,11 +48,12 @@ Description
 //#include "./phaseChange/twoPhaseModels/interfaceProperties/interfaceProperties.H"
 #include "./phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H"
 #include "./phaseChange/smoothInterfaceProperties/smoothInterfaceProperties.H"
+#include "./phaseChange/transportModels/transportModel/transportModel.H"
 #include "kinematicMomentumTransportModel.H"
 #include "pimpleControl.H"
 //#include "pimpleMultiRegionControl.H" //multiRegionControl is only for dynamicFvMesh
 #include "fvOptions.H"
-#include "CorrectPhi.H"
+//#include "CorrectPhi.H"
 #include "regionProperties.H"
 
 //solid
@@ -72,8 +73,9 @@ int main(int argc, char *argv[])
     #include "createDyMControls.H"
     #include "initContinuityErrs.H"
     #include "createFields.H"
-    #include "initCorrectPhi.H"
-    #include "createUfIfPresent.H"
+//    #include "initCorrectPhi.H"
+    #include "correctPhi.H"
+//    #include "createUfIfPresent.H"
 
 //Solid
     pimpleControl pimple2(mesh2);
@@ -83,6 +85,7 @@ int main(int argc, char *argv[])
     #include "./solid/readSolidTimeControls.H"
 
     turbulence->validate();
+
 
     #include "CourantNo.H"				//only for fluid
 //For both meshes    
@@ -101,7 +104,7 @@ int main(int argc, char *argv[])
         // Store divU from the previous mesh so that it can be mapped
         // and used in correctPhi to ensure the corrected phi has the
         // same divergence
-        volScalarField divU("divU0", fvc::div(fvc::absolute(phi, U)));
+ //       volScalarField divU("divU0", fvc::div(fvc::absolute(phi, U)));
 
         #include "CourantNo.H"
         #include "./alphaCourantNo.H"
@@ -115,40 +118,7 @@ int main(int argc, char *argv[])
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
-/*
-    		if (pimple.firstPimpleIter() || moveMeshOuterCorrectors)
-            {
-                mesh.update();
-
-                if (mesh.changing())
-                {
-                    gh = (g & mesh.C()) - ghRef;
-                    ghf = (g & mesh.Cf()) - ghRef;
-
-                    if (correctPhi)
-                    {
-                        // Calculate absolute flux
-                        // from the mapped surface velocity
-                        phi = mesh.Sf() & Uf();
-
-                        #include "correctPhi.H"
-
-                        // Make the flux relative to the mesh motion
-                        fvc::makeRelative(phi, U);
-                    }
-
-                    //mixture.correct();
-		    interface.correct();
-		    TPCmixture->correct();
-
-                    if (checkMeshCourantNo)
-                    {
-                        #include "meshCourantNo.H"
-                    }
-                }
-            }
-*/
-            divU = fvc::div(fvc::absolute(phi, U));
+//            divU = fvc::div(fvc::absolute(phi, U));
 
             #include "alphaControls.H"
             #include "alphaEqnSubCycle.H"

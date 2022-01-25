@@ -1,7 +1,7 @@
 $(OBJECTS_DIR)/phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixtureNew.C.dep: \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixtureNew.C \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H \
-$(WM_PROJECT_DIR)/src/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H \
+./phaseChange/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../twoPhaseModels/incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/typeInfo.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/runTimeSelectionTables.H \
@@ -9,13 +9,10 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFields.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/dimensionedScalar.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/autoPtr.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Pair.H \
-$(WM_PROJECT_DIR)/src/transportModels/lnInclude/transportModel.H \
-$(WM_PROJECT_DIR)/src/transportModels/lnInclude/viscosityModel.H \
-./phaseChange/twoPhaseModels/twoPhaseMixture/lnInclude/twoPhaseMixture.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../transportModels/transportModel/transportModel.H \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../transportModels/viscosityModels/viscosityModel/viscosityModel.H \
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../twoPhaseModels/twoPhaseMixture/twoPhaseMixture/twoPhaseMixture.H \
+$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/error.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/className.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/token.H \
@@ -522,7 +519,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SpatialVectorI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SpatialTensorI.H \
 
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H :
-$(WM_PROJECT_DIR)/src/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H :
+./phaseChange/twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H :
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../twoPhaseModels/incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/typeInfo.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/runTimeSelectionTables.H :
@@ -530,13 +527,10 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFields.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/dimensionedScalar.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/autoPtr.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Pair.H :
-$(WM_PROJECT_DIR)/src/transportModels/lnInclude/transportModel.H :
-$(WM_PROJECT_DIR)/src/transportModels/lnInclude/viscosityModel.H :
-./phaseChange/twoPhaseModels/twoPhaseMixture/lnInclude/twoPhaseMixture.H :
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H :
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../transportModels/transportModel/transportModel.H :
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../transportModels/viscosityModels/viscosityModel/viscosityModel.H :
 phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/../../twoPhaseModels/twoPhaseMixture/twoPhaseMixture/twoPhaseMixture.H :
+$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/error.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/className.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/token.H :

@@ -1,15 +1,21 @@
 //Info<<"\n----------<solve pressure equation>----------"<< endl;
 
 {
+    tmp<volScalarField> rAU;
+    
     rAU = 1.0/UEqn.A();		//correcPhi 조건 제거
     surfaceScalarField rAUf("rAUf", fvc::interpolate(rAU()));		//interface's RAU
+
+
     volVectorField HbyA(constrainHbyA(rAU()*UEqn.H(), U, p_rgh));	//openFOAM8에는 constraintHbyA가 새로 생성
-									//-----22.01.13 추후 확인하기
+//    volVectorField HbyA("HbyA", U);					//-----22.01.25 단순화 하면 tmp case 문제 생김
+//    HbyA = rAU*UEqn.H();
+
     surfaceScalarField phiHbyA
     (
         "phiHbyA",
         fvc::flux(HbyA)
-      + fvc::interpolate(rho*rAU())*fvc::ddtCorr(U, phi/*, Uf*/)		//-----22.01.13 유도 방법 다름 확인하기
+      + fvc::interpolate(rho*rAU())*fvc::ddtCorr(U, phi)		//-----22.01.13 유도 방법 다름 확인하기
     );
 
 
@@ -45,7 +51,11 @@
     phiHbyA += phig;
 
     // Update the pressure BCs to ensure flux consistency
-    constrainPressure(p_rgh, U, phiHbyA, rAUf);		//turn off 22.01.14 = updateCoeffs error happen
+   constrainPressure(p_rgh, U, phiHbyA, rAUf);		//turn off 22.01.14 = updateCoeffs error happen
+    								// 22.01.25 turn off possible
+
+
+
 
     Pair<tmp<volScalarField>> vDotP = TPCmixture->vDotP();
     	const volScalarField& vDotcP = vDotP[0]();
@@ -70,6 +80,7 @@
 //        p_rghEqn.solve();
 
 //-------------------------------22.01.13------------------------------------//
+
 
 	if (phaseChange){
 		solve
@@ -107,6 +118,9 @@
     // Make the fluxes relative to the mesh motion
 //    fvc::makeRelative(phi, U);	//---turn of 22.01.14 (don't need mesh motion)
 
+
+    #include "continuityErrs.H"
+
     p == p_rgh + rho*gh;
 
     if (p_rgh.needReference())
@@ -120,7 +134,7 @@
         p_rgh = p - rho*gh;
     }
 }
-/*---------22.01.13
+/*---------22.01.13------------------------------------------//
     if (!correctPhi)
     {
         rAU.clear();

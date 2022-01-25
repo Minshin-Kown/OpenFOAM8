@@ -1,5 +1,5 @@
 tmp<volScalarField> rAU;
-
+/*
 if (correctPhi)
 {
     rAU = new volScalarField
@@ -46,3 +46,4 @@ else
 
     #include "continuityErrs.H"
 }
+*/

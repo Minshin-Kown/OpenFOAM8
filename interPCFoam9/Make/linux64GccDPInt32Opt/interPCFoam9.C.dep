@@ -1,15 +1,15 @@
-$(OBJECTS_DIR)/interPCFoam8.C.dep: \
-interPCFoam8.C \
+$(OBJECTS_DIR)/interPCFoam9.C.dep: \
+interPCFoam9.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvCFD.H \
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/dynamicFvMesh.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CMULES.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/subCycle.H \
 ./phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H \
 ./phaseChange/smoothInterfaceProperties/smoothInterfaceProperties.H \
+./phaseChange/transportModels/transportModel/transportModel.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/incompressible/lnInclude/kinematicMomentumTransportModel.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/pimpleControl.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptions.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CorrectPhi.H \
 $(WM_PROJECT_DIR)/src/regionModels/regionModel/lnInclude/regionProperties.H \
 $(WM_PROJECT_DIR)/src/thermophysicalModels/solidThermo/lnInclude/solidThermo.H \
 ./solid/solidRegionDiffNo.H \
@@ -21,8 +21,7 @@ createMeshes.H \
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/createDyMControls.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/initContinuityErrs.H \
 createFields.H \
-initCorrectPhi.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createUfIfPresent.H \
+correctPhi.H \
 ./solid/createFields2.H \
 ./solid/readSolidTimeControls.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CourantNo.H \
@@ -75,6 +74,9 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Pair.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFields.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricField.H \
+$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/primitiveFieldsFwd.H \
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFieldsFwd.H \
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFieldsFwd.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/incompressible/lnInclude/IncompressibleMomentumTransportModel.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/laminarModel.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/RASModel.H \
@@ -87,9 +89,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionConvergenceControl.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionCorrectorConvergenceControl.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/pimpleControlI.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionList.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFieldsFwd.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFieldsFwd.H \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CorrectPhi.C \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTable.H \
 $(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude/basicThermo.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/addRegionOption.H \
@@ -105,7 +104,7 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createPhi.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readGravitationalAcceleration.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readhRef.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/gh.H \
-readTransportProperties.H \
+./readTransportProperties.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createFvOptions.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/continuityErrs.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readTimeControls.H \
@@ -198,7 +197,6 @@ $(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/sigQuit.H \
 $(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/sigSegv.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/argListI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/scalarRanges.H \
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/primitiveFieldsFwd.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/geometricOneField.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/zero.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/zeroField.H \
@@ -257,7 +255,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionSolutionControl.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOption.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrList.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionListTemplates.C \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControl.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/uLabel.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTableI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTable.C \
@@ -447,7 +444,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionSolutionControlI.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrListI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrList.C \
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControlI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Tuple2.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTableIO.C \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOList.H \
@@ -598,6 +594,7 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/coupledFvPatchFields.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMatrixSolve.C \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/linearViscousStress.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/Stokes.C \
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControl.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fluidSolutionControlI.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/solutionControlI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Residuals.H \
@@ -713,6 +710,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/FieldFieldFunctionsM.C \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SolverPerformance.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/LduMatrix.H \
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/linearViscousStress.C \
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControlI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/MeshObject.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Residuals.C \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/LPtrList.H \
@@ -884,10 +882,10 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CMULES.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/subCycle.H :
 ./phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H :
 ./phaseChange/smoothInterfaceProperties/smoothInterfaceProperties.H :
+./phaseChange/transportModels/transportModel/transportModel.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/incompressible/lnInclude/kinematicMomentumTransportModel.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/pimpleControl.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptions.H :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CorrectPhi.H :
 $(WM_PROJECT_DIR)/src/regionModels/regionModel/lnInclude/regionProperties.H :
 $(WM_PROJECT_DIR)/src/thermophysicalModels/solidThermo/lnInclude/solidThermo.H :
 ./solid/solidRegionDiffNo.H :
@@ -899,8 +897,7 @@ createMeshes.H :
 $(WM_PROJECT_DIR)/src/dynamicFvMesh/lnInclude/createDyMControls.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/initContinuityErrs.H :
 createFields.H :
-initCorrectPhi.H :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createUfIfPresent.H :
+correctPhi.H :
 ./solid/createFields2.H :
 ./solid/readSolidTimeControls.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CourantNo.H :
@@ -953,6 +950,9 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Pair.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOdictionary.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFields.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricField.H :
+$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/primitiveFieldsFwd.H :
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFieldsFwd.H :
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFieldsFwd.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/incompressible/lnInclude/IncompressibleMomentumTransportModel.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/laminarModel.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/RASModel.H :
@@ -965,9 +965,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionConvergenceControl.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionCorrectorConvergenceControl.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/pimpleControlI.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionList.H :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/volFieldsFwd.H :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceFieldsFwd.H :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/CorrectPhi.C :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTable.H :
 $(WM_PROJECT_DIR)/src/thermophysicalModels/basic/lnInclude/basicThermo.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/addRegionOption.H :
@@ -983,7 +980,7 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createPhi.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readGravitationalAcceleration.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readhRef.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/gh.H :
-readTransportProperties.H :
+./readTransportProperties.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/createFvOptions.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/continuityErrs.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/readTimeControls.H :
@@ -1076,7 +1073,6 @@ $(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/sigQuit.H :
 $(WM_PROJECT_DIR)/src/OSspecific/POSIX/lnInclude/sigSegv.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/argListI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/scalarRanges.H :
-$(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/primitiveFieldsFwd.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/geometricOneField.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/zero.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/zeroField.H :
@@ -1135,7 +1131,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionSolutionControl.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOption.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrList.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionListTemplates.C :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControl.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/uLabel.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTableI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTable.C :
@@ -1325,7 +1320,6 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/singleRegionSolutionControlI.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvOptionI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrListI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/PtrList.C :
-$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControlI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Tuple2.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/HashTableIO.C :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/IOList.H :
@@ -1476,6 +1470,7 @@ $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/coupledFvPatchFields.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvMatrixSolve.C :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/linearViscousStress.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/Stokes.C :
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControl.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fluidSolutionControlI.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/solutionControlI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Residuals.H :
@@ -1591,6 +1586,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/FieldFieldFunctionsM.C :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SolverPerformance.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/LduMatrix.H :
 $(WM_PROJECT_DIR)/src/MomentumTransportModels/momentumTransportModels/lnInclude/linearViscousStress.C :
+$(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/nonOrthogonalSolutionControlI.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/MeshObject.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/Residuals.C :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/LPtrList.H :

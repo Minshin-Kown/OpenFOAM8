@@ -1,3 +1,12 @@
+//-----------------------22.01.25---------------------------------------------------//
+  
+  Pair<tmp<volScalarField> > mDot = TPCmixture->mDotAlphal();
+				const volScalarField& mDotcAlpha= mDot[0]();    //Vapor
+				const volScalarField& mDotvAlpha= mDot[1]();    //Liquid
+
+				mDotAlpha = mDotvAlpha*alpha1+mDotcAlpha*(1.0-alpha1);
+                                    //alpha1=1이면 liquid
+//-----------------------------------------------------------------------------------//
 /*
 surfaceScalarField rhoPhi
      (

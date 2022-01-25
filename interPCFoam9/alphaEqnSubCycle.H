@@ -8,6 +8,11 @@ phic = min(interface.cAlpha()*phic, max(phic));
 dimensionedScalar totalDeltaT = runTime.deltaT();
 //-------------------------------------------------------------//
 
+//----------------------------22.01.25------------------------//
+volScalarField divU(fvc::div(phi));
+//-------------------------------------------------------------//
+
+
 if (nAlphaSubCycles > 1)
 {
     dimensionedScalar totalDeltaT = runTime.deltaT();
