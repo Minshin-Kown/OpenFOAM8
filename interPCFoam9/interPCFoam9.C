@@ -45,15 +45,12 @@ Description
 #include "dynamicFvMesh.H"
 #include "CMULES.H"
 #include "subCycle.H"
-//#include "./phaseChange/twoPhaseModels/interfaceProperties/interfaceProperties.H"
 #include "./phaseChange/phaseChangeTwoPhaseMixtures/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H"
 #include "./phaseChange/smoothInterfaceProperties/smoothInterfaceProperties.H"
 #include "./phaseChange/transportModels/transportModel/transportModel.H"
 #include "kinematicMomentumTransportModel.H"
 #include "pimpleControl.H"
-//#include "pimpleMultiRegionControl.H" //multiRegionControl is only for dynamicFvMesh
 #include "fvOptions.H"
-//#include "CorrectPhi.H"
 #include "regionProperties.H"
 
 //solid
@@ -73,15 +70,11 @@ int main(int argc, char *argv[])
     #include "createDyMControls.H"
     #include "initContinuityErrs.H"
     #include "createFields.H"
-//    #include "initCorrectPhi.H"
     #include "correctPhi.H"
-//    #include "createUfIfPresent.H"
 
 //Solid
     pimpleControl pimple2(mesh2);
-//    pimpleMultiRegionControl pimples (mesh, mesh2);
     #include "./solid/createFields2.H"
-//    #include "./solid/solidRegionDiffusionNo.H"	//아래 2개로 분배
     #include "./solid/readSolidTimeControls.H"
 
     turbulence->validate();
@@ -91,6 +84,7 @@ int main(int argc, char *argv[])
 //For both meshes    
     #include "./solid/solidRegionDiffusionNo.H"		//1
     #include "./deltaT/setInitialMultiRegionDeltaT.H"
+ 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
