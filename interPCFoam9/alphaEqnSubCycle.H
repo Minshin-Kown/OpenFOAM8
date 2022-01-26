@@ -1,4 +1,5 @@
 
+
 //------------------------------22.01.07----------------------//
 surfaceScalarField phic(mag(phi/mesh.magSf()));
 phic = min(interface.cAlpha()*phic, max(phic)); 

@@ -46,6 +46,7 @@ if (adjustTimeStep)
     scalar maxDeltaTFluid = maxCo/(CoNum + small);
     scalar maxDeltaTSolid = maxDi/(DiNum + small);
 
+
     scalar deltaTFluid =
         min
         (
@@ -62,7 +63,7 @@ if (adjustTimeStep)
         )
     );
 
-    Info<< "deltaT = " <<  runTime.deltaT().value() << endl;
+    Info<< "MultiRegions deltaT = " <<  runTime.deltaT().value() << endl;
 }
 
 // ************************************************************************* //

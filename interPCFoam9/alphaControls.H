@@ -1,3 +1,7 @@
+rhoPhi=0.0*rhoPhi;
+
+
+
 //-----------------------22.01.25---------------------------------------------------//
   
   Pair<tmp<volScalarField> > mDot = TPCmixture->mDotAlphal();

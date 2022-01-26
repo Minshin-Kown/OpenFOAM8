@@ -66,7 +66,7 @@ ITstream compressionScheme2
         talphaPhi = alpha1Eqn.flux();
     }
 ----------------------------------------------------------------------------------*/
-    volScalarField alpha10("alpha10", alpha1);
+//    volScalarField alpha10("alpha10", alpha1);
 //--------------------22.01.07 chtFlowboiling 시작부분-------------------------------------------//
 
 //------------------------------22.01.07---------------------------------------------------------//
@@ -85,6 +85,7 @@ ITstream compressionScheme2
                 phi,
                 alpha1,
                 compressionScheme.rewind()
+		//divAlphaName
             )
 //------------------------------22.01.12--------------------------------------------------------//
 	    + fvc::flux
@@ -93,6 +94,7 @@ ITstream compressionScheme2
 		//-fvc::flux(-phir, alpha1, divAlpharName),
 		alpha1,
 		compressionScheme2.rewind()
+		//divAlpharName
 	    )
         );
 
@@ -130,6 +132,7 @@ ITstream compressionScheme2
 
 	if(phaseChange)
 	{
+ 
 		MULES::explicitSolve
 			(
 			 geometricOneField(),

@@ -4,7 +4,7 @@ Info<< "Create fluid fields\n" << endl;
 
 Info<< "Reading field p_rgh\n" << endl;
 
-/*
+
 Info<< "Reading field temporary T\n" << endl;
 volScalarField T
 (
@@ -18,7 +18,7 @@ volScalarField T
     ),
     mesh
 );
-*/
+
 /*
 Info<< "Adding to temporary he Field" << endl;
 
@@ -99,6 +99,7 @@ volScalarField KE
 #include "createPhi.H"
 
 //-------------------------------------------------------------------//
+
 
 Info<< "Reading fluid thermophysical properties\n" << endl;
 

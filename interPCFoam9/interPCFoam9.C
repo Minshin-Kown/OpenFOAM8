@@ -102,6 +102,7 @@ int main(int argc, char *argv[])
 
         #include "CourantNo.H"
         #include "./alphaCourantNo.H"
+	#include "./deltaT/setInterfaceDeltaT.H"
 	#include "./solid/solidRegionDiffusionNo.H"	//2
         #include "./deltaT/setMultiRegionDeltaT.H"
 
@@ -109,18 +110,25 @@ int main(int argc, char *argv[])
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
+
+	#include "alphaControls.H"
+	#include "alphaEqnSubCycle.H"
+
+	interface.correct();
+	turbulence->correct();
+
+
         // --- Pressure-velocity PIMPLE corrector loop
         while (pimple.loop())
         {
-//            divU = fvc::div(fvc::absolute(phi, U));
-
-            #include "alphaControls.H"
-            #include "alphaEqnSubCycle.H"
+//            #include "alphaControls.H"		//-----22.01.26 move outside of loop
+//            #include "alphaEqnSubCycle.H"
 
             //mixture.correct();
-	    interface.correct();
 	    //TPCmixture->correct();
-	    turbulence->correct();
+
+//	    interface.correct();			//-----22.01.26 move outside of loop
+//	    turbulence->correct();
 
             #include "UEqn.H"			//Momentum-Predictor : get velocity vector
 	    #include "EEqn.H"
