@@ -1,5 +1,4 @@
-Info<<"\n----------<Solve fluid hEqn>----------"<< endl;
-
+Info<<"\n---------------------------------<solve Fluid T equation>--------------------------------"<< endl;
 {
 //	volScalarField& he = FluidThermo.he();
 
@@ -97,6 +96,5 @@ Pair<tmp<volScalarField> > mDot = TPCmixture->mDotT();
 		mDotT = (mDotcT-mDotvT)*((T)-TSatLocal);	//m dot fg = vapor - fluid
 
 //-----------------------------------------------------------------------------//
-Info<<"\n-----------------------------------------"<< endl;
 
 

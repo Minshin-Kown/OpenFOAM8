@@ -134,7 +134,7 @@ int main(int argc, char *argv[])
 	    #include "EEqn.H"
             // --- Pressure corrector loop
 
-	    Info<<"\n----------<solve pressure equation>----------"<< endl;
+	    Info<<"\n---------------------------------<solve pressure equation>--------------------------------"<< endl;
 	    while (pimple.correct())
             {
                 #include "pEqn.H"		//Pressure-Corrector : get pressure gradient

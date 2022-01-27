@@ -1,4 +1,6 @@
-    fvVectorMatrix UEqn
+ Info<<"\n---------------------------------<solve Velocity equation>--------------------------------"<< endl;
+
+fvVectorMatrix UEqn
     (
         fvm::ddt(rho, U) 
       + fvm::div(rhoPhi, U)
