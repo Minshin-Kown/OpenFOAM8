@@ -26,7 +26,6 @@ EXE_LIBS = \
     -lfiniteVolume \
     -ldynamicFvMesh \
     -ltopoChangerFvMesh \
-    -lfvOptions \
     -lmeshTools \
     -lsolidThermo \
     -lregionModels \
@@ -38,4 +37,5 @@ EXE_LIBS = \
     -lsmoothInterfaceProperties \
     -ltwoPhaseProperties \
     -lincompressibleTransportModels \
-    -lphaseChangeTwoPhaseMixtures 
+    -lphaseChangeTwoPhaseMixtures \
+    -lfvOptionsx

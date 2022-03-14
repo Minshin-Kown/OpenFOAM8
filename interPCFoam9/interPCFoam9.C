@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
     #include "./solid/createFields2.H"
     #include "./solid/readSolidTimeControls.H"
 
-    turbulence->validate();
+//    turbulence->validate();		//---------22.02.14 for RAS simulation
 
 
     #include "CourantNo.H"				//only for fluid

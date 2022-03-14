@@ -7,7 +7,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedFvsPatchField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceMesh.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedSurfaceFieldsFwd.H \
-lnInclude/MPLIC.H \
+PLIC/./../MPLIC/MPLIC.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricField.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.C \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvsPatchField.H \
@@ -553,7 +553,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedFvsPatchField.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceMesh.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedSurfaceFieldsFwd.H :
-lnInclude/MPLIC.H :
+PLIC/./../MPLIC/MPLIC.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/GeometricField.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.C :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/fvsPatchField.H :

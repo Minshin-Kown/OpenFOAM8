@@ -1,7 +1,6 @@
 $(OBJECTS_DIR)/phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixtureNew.C.dep: \
 phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixtureNew.C \
 phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H \
-./../twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H \
 phaseChangeTwoPhaseMixture/../../twoPhaseModels/incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/typeInfo.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/runTimeSelectionTables.H \
@@ -519,7 +518,6 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SpatialVectorI.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SpatialTensorI.H \
 
 phaseChangeTwoPhaseMixture/phaseChangeTwoPhaseMixture.H :
-./../twoPhaseModels/incompressibleTwoPhaseMixture/lnInclude/incompressibleTwoPhaseMixture.H :
 phaseChangeTwoPhaseMixture/../../twoPhaseModels/incompressibleTwoPhaseMixture/incompressibleTwoPhaseMixture.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/typeInfo.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/runTimeSelectionTables.H :

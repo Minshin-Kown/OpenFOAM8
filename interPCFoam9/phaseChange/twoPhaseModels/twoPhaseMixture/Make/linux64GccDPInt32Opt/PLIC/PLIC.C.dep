@@ -2,7 +2,7 @@ $(OBJECTS_DIR)/PLIC/PLIC.C.dep: \
 PLIC/PLIC.C \
 PLIC/PLIC.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedSurfaceFields.H \
-lnInclude/MPLIC.H \
+PLIC/./../MPLIC/MPLIC.H \
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedFvsPatchField.H \
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceMesh.H \
@@ -547,7 +547,7 @@ $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/MatrixBlock.C \
 
 PLIC/PLIC.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedSurfaceFields.H :
-lnInclude/MPLIC.H :
+PLIC/./../MPLIC/MPLIC.H :
 $(WM_PROJECT_DIR)/src/OpenFOAM/lnInclude/SlicedGeometricField.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/slicedFvsPatchField.H :
 $(WM_PROJECT_DIR)/src/finiteVolume/lnInclude/surfaceMesh.H :

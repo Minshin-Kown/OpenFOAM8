@@ -64,7 +64,7 @@ SourceFiles
 #ifndef PLIC_H
 #define PLIC_H
 
-#include "MPLIC.H"
+#include "./../MPLIC/MPLIC.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
