@@ -1,0 +1,9 @@
+. $WM_PROJECT_DIR/wmake/scripts/AllwmakeParseArguments
+
+wmake $targetType phaseChange/twoPhaseModels/twoPhaseMixture
+wmake $targetType phaseChange/twoPhaseModels/interfaceProperties
+wmake $targetType phaseChange/twoPhaseModels/twoPhaseProperties
+wmake $targetType phaseChange/twoPhaseModels/incompressibleTwoPhaseMixture
+wmake $targetType phaseChange/smoothInterfaceProperties
+wmake $targetType phaseChange/phaseChangeTwoPhaseMixtures/
+

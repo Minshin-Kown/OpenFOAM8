@@ -212,6 +212,9 @@ autoPtr<incompressible::momentumTransportModel> turbulence
 );
 
 
+momentumTransportModel& myTurbul = turbulence();
+
+
 #include "readGravitationalAcceleration.H"
 #include "readhRef.H"
 #include "gh.H"

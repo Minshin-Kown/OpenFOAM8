@@ -2,7 +2,7 @@ Info<<"\n---------------------------------<solve Fluid T equation>--------------
 {
 //	volScalarField& he = FluidThermo.he();
 
-
+	//`volScalarField& DkEff = myTurbul.blend();
 
 
 //---------------------------------22.01.13---------------------------------//
@@ -17,6 +17,8 @@ Pair<tmp<volScalarField> > vDotT = TPCmixture->vDotT();
 	volScalarField alphaDiffuT = K/(C*rho);
 //--------------------------------------------------------------------------//
 
+//Info << "reading alphaEff max/min : " << max(alphaDiffuT).value() << ',' << min(alphaDiffuT).value() << endl;
+//Info << "reading DKeff max/min : " << max(DkEff).value() << ',' << min(DkEff).value() << endl;
 
 {
     while (pimple.correctNonOrthogonal())
